@@ -1,0 +1,2 @@
+def getText():
+   print ("ChaChaCha")
