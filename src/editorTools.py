@@ -1,0 +1,2 @@
+def replaceName():
+   return "kek"
