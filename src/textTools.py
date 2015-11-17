@@ -1,2 +1,0 @@
-def getText():
-   print ("ChaChaCha")
