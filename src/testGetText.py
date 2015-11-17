@@ -1,3 +1,0 @@
-import textTools
-
-textTools.getText();
