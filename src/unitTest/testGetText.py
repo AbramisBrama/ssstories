@@ -1,3 +1,0 @@
-import unitTest
-
-unitTest.getText();
