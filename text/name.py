@@ -4,5 +4,5 @@ class Name:
     case=1
     text=""
     preposition=""
-    def analyseCase(self):
+    def analyse_case(self):
         case=1
