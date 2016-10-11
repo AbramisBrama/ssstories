@@ -11,6 +11,8 @@ class TestAnalyser(unittest.TestCase):
         self.assertFalse(text.analyser.is_name(" "))
         self.assertFalse(text.analyser.is_name("324"))
         self.assertFalse(text.analyser.is_name("WEВоваefwe"))
+        self.assertFalse(text.analyser.is_name("ей"))
+        self.assertFalse(text.analyser.is_name("же"))
         self.assertTrue(text.analyser.is_name("Вова"))
         self.assertTrue(text.analyser.is_name("Димону"))
         self.assertTrue(text.analyser.is_name("Петькой"))
