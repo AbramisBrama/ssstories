@@ -25,7 +25,9 @@ class TestAnalyser(unittest.TestCase):
         self.assertFalse(text.analyser.is_name("а"))
 
     def test_get_structured_sentence(self):
-        self.assertEquals(text.analyser.get_structured_sentence("Я бы, Вася, поел коня, - сказал Отец!"), ['Я', ' ', 'бы', ',', ' ', 'Вася', ',', ' ', 'поел', ' ', 'коня', ',', ' ', '-', ' ', 'сказал', ' ', 'Отец', '!'])
+        self.assertEquals(text.analyser.get_structured_sentence("Я бы, Вася, поел коня, - сказал Отец!"),
+                          ['Я', ' ', 'бы', ',', ' ', 'Вася', ',', ' ', 'поел', ' ', 'коня', ',', ' ', '-', ' ',
+                           'сказал', ' ', 'Отец', '!'])
 
     def test_get_case(self):
         name = Name()
@@ -49,6 +51,7 @@ class TestAnalyser(unittest.TestCase):
         self.assertEquals(text.analyser.get_name(word).ending, "у")
 
         self.assertIsNone(text.analyser.get_name("Псина"))
+
 
 if __name__ == '__main__':
     unittest.main()
