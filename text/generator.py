@@ -15,7 +15,6 @@ def text_contains_name(text_for_story):
             break
     return result
 
-
 def get_text():
     directory = '..\\Data\\texts'
 
@@ -63,6 +62,5 @@ def get_text():
     rndfile.close()
 
     return result_string
-
 
 print(get_text())
