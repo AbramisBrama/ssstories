@@ -7,6 +7,8 @@ from text.name import Name
 
 
 def is_name(word):
+    if not isinstance(word, str):
+        return False
     rezult = False
     for nameMap in names.names:
         for key in nameMap:
@@ -14,7 +16,9 @@ def is_name(word):
                 rezult = True
                 break
         if rezult: break
-    if rezult and len(key) == len(word):  # the simplest case
+    if not rezult:  # the word doesn't begin as a name
+        return False
+    elif rezult and len(key) == len(word):  # the simplest case - the whole
         return True
     else:
         for subsuff in nameMap[key]:
@@ -38,6 +42,7 @@ def is_name(word):
                     else:
                         rezult = False
     return rezult
+
 
 def get_name(word):
     rezult = False
@@ -79,15 +84,17 @@ def get_name(word):
                         return None
     return name
 
+
 def get_case(name):
     return 0
+
 
 def get_structured_sentence(sentence):
     seps = separators.get_separators()
     buf = ""
     rez = []
     for letter in sentence:
-        if letter in seps: #we've got a word
+        if letter in seps:  # we've got a word
             if buf:
                 rez.append(buf)
             rez.append(letter)
@@ -95,4 +102,3 @@ def get_structured_sentence(sentence):
         else:
             buf = buf + letter
     return rez
-
