@@ -19,6 +19,10 @@ class TestAnalyser(unittest.TestCase):
         self.assertTrue(text.analyser.is_name("Владимиром"))
         self.assertTrue(text.analyser.is_name("Пётр"))
         self.assertTrue(text.analyser.is_name("Димке"))
+        self.assertFalse(text.analyser.is_name(""))
+        self.assertFalse(text.analyser.is_name(1345))
+        self.assertFalse(text.analyser.is_name("о"))
+        self.assertFalse(text.analyser.is_name("а"))
 
     def test_get_structured_sentence(self):
         self.assertEquals(text.analyser.get_structured_sentence("Я бы, Вася, поел коня, - сказал Отец!"), ['Я', ' ', 'бы', ',', ' ', 'Вася', ',', ' ', 'поел', ' ', 'коня', ',', ' ', '-', ' ', 'сказал', ' ', 'Отец', '!'])
