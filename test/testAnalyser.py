@@ -17,7 +17,7 @@ class TestAnalyser(unittest.TestCase):
         self.assertTrue(text.analyser.is_name("Димону"))
         self.assertTrue(text.analyser.is_name("Петькой"))
         self.assertTrue(text.analyser.is_name("Владимиром"))
-        self.assertTrue(text.analyser.is_name("Пётр"))
+        self.assertTrue(text.analyser.is_name("Петр"))
         self.assertTrue(text.analyser.is_name("Димке"))
         self.assertFalse(text.analyser.is_name(""))
         self.assertFalse(text.analyser.is_name(1345))
@@ -25,30 +25,30 @@ class TestAnalyser(unittest.TestCase):
         self.assertFalse(text.analyser.is_name("а"))
 
     def test_get_structured_sentence(self):
-        self.assertEquals(text.analyser.get_structured_sentence("Я бы, Вася, поел коня, - сказал Отец!"),
+        self.assertEqual(text.analyser.get_structured_sentence("Я бы, Вася, поел коня, - сказал Отец!"),
                           ['Я', ' ', 'бы', ',', ' ', 'Вася', ',', ' ', 'поел', ' ', 'коня', ',', ' ', '-', ' ',
                            'сказал', ' ', 'Отец', '!'])
 
     def test_get_case(self):
-        name = Name()
+        name = Name("", "", "", "")
         name.preposition = "на"
         name.text = "Коле"
 
     def test_get_name(self):
         word = "Петькой"
-        self.assertEquals(text.analyser.get_name(word).name, "Пет")
-        self.assertEquals(text.analyser.get_name(word).suffix, "ьк")
-        self.assertEquals(text.analyser.get_name(word).ending, "ой")
+        self.assertEqual(text.analyser.get_name(word).name, "Пет")
+        self.assertEqual(text.analyser.get_name(word).suffix, "ьк")
+        self.assertEqual(text.analyser.get_name(word).ending, "ой")
 
         word = "Володя"
-        self.assertEquals(text.analyser.get_name(word).name, "Волод")
-        self.assertEquals(text.analyser.get_name(word).suffix, "")
-        self.assertEquals(text.analyser.get_name(word).ending, "я")
+        self.assertEqual(text.analyser.get_name(word).name, "Волод")
+        self.assertEqual(text.analyser.get_name(word).suffix, "")
+        self.assertEqual(text.analyser.get_name(word).ending, "я")
 
         word = "Витеньку"
-        self.assertEquals(text.analyser.get_name(word).name, "Вит")
-        self.assertEquals(text.analyser.get_name(word).suffix, "еньк")
-        self.assertEquals(text.analyser.get_name(word).ending, "у")
+        self.assertEqual(text.analyser.get_name(word).name, "Вит")
+        self.assertEqual(text.analyser.get_name(word).suffix, "еньк")
+        self.assertEqual(text.analyser.get_name(word).ending, "у")
 
         self.assertIsNone(text.analyser.get_name("Псина"))
 
