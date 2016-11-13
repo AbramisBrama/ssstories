@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+
 import os
 import random
 import codecs
@@ -16,7 +17,7 @@ def text_contains_name(text_for_story):
     return result
 
 def get_text():
-    directory = '..\\Data\\texts'
+    directory = 'Data\\texts'
 
     files = os.listdir(directory)
 
