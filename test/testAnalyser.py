@@ -26,8 +26,8 @@ class TestAnalyser(unittest.TestCase):
 
     def test_get_structured_sentence(self):
         self.assertEqual(text.analyser.get_structured_sentence("Я бы, Вася, поел коня, - сказал Отец!"),
-                          ['Я', ' ', 'бы', ',', ' ', 'Вася', ',', ' ', 'поел', ' ', 'коня', ',', ' ', '-', ' ',
-                           'сказал', ' ', 'Отец', '!'])
+                         ['Я', ' ', 'бы', ',', ' ', 'Вася', ',', ' ', 'поел', ' ', 'коня', ',', ' ', '-', ' ',
+                          'сказал', ' ', 'Отец', '!'])
 
     def test_get_case(self):
         name = Name("", "", "", "")
@@ -51,6 +51,12 @@ class TestAnalyser(unittest.TestCase):
         self.assertEqual(text.analyser.get_name(word).ending, "у")
 
         self.assertIsNone(text.analyser.get_name("Псина"))
+
+    def test_get_preposition(self):
+        self.assertEqual(text.analyser.get_preposition("Доктор Конь соскучился по мрачному Петьке в штанах.", 10), "по")
+        self.assertEqual(text.analyser.get_preposition("Без Володи мы все умрём.", 2), "без")
+        self.assertEqual(text.analyser.get_preposition("Чёрный Димон выхватил кинжал.", 2), "")
+        self.assertIsNone(text.analyser.get_preposition("Куоцуа жцуадл цуа.", 5))
 
 
 if __name__ == '__main__':

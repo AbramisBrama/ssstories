@@ -3,6 +3,7 @@
 from namedata import names
 from namedata import endings
 from namedata import separators
+from namedata import cases
 from text.name import Name
 
 
@@ -45,3 +46,29 @@ def get_structured_sentence(sentence):
         else:
             buf = buf + letter
     return rez
+
+
+def get_preposition(sentence, name_index):
+    structured_sentence = get_structured_sentence(sentence)
+    if name_index > len(structured_sentence) or not is_name(structured_sentence[name_index]):
+        return None
+    prepositions_set = set()
+    for prep_list in cases.prepositions:
+        for prep in prep_list:
+            prepositions_set.add(prep)
+    max_prep_distance = 10  # Maximum 5 words between preposition and name
+    word = ""
+    i = 1
+    punctuation = separators.get_separators().copy()
+    punctuation.remove(' ')
+    while word.lower() not in prepositions_set:
+        word = structured_sentence[name_index - i]
+        if i > max_prep_distance or name_index - i < 0:
+            return ""
+        i += 1
+    return word.lower()
+
+
+
+
+
