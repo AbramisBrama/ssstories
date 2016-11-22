@@ -9,80 +9,23 @@ from text.name import Name
 def is_name(word):
     if not isinstance(word, str):
         return False
-    rezult = False
-    for nameMap in names.names:
-        for key in nameMap:
-            if word.startswith(key):
-                rezult = True
-                break
-        if rezult: break
-    if not rezult:  # the word doesn't begin as a name
-        return False
-    elif rezult and len(key) == len(word):  # the simplest case - the whole
-        return True
-    else:
-        for subsuff in nameMap[key]:
-            if len(subsuff) > 0 and (len(word) - len(key) > 2):  # suffix found
-                if word.startswith(key + subsuff):
-                    rezult = True
-                    for suff in endings.endings[nameMap[key][subsuff]]:
-                        if word.endswith(suff):
-                            rezult = True
-                            break
-                    else:
-                        rezult = False
-                    break
-                else:
-                    rezult = False
-            elif len(word) - len(key) < 3:  # the first form of name
-                for suff in endings.endings[nameMap[key][""]]:
-                    if word.endswith(suff):
-                        rezult = True
-                        break
-                    else:
-                        rezult = False
-    return rezult
+    return get_name(word) is not None
 
 
 def get_name(word):
-    rezult = False
-    name = Name()
+    if not isinstance(word, str):
+        return None
     for nameMap in names.names:
         for key in nameMap:
             if word.startswith(key):
-                rezult = True
-                name.name = key
-                break
-        if rezult: break
-    if rezult and len(key) == len(word):  # the simplest case
-        return name
-    else:
-        for subsuff in nameMap[key]:
-            if len(subsuff) > 0 and (len(word) - len(key) > 2):  # suffix found
-                if word.startswith(key + subsuff):
-                    rezult = True
-                    name.suffix = subsuff
-                    for suff in endings.endings[nameMap[key][subsuff]]:
-                        if word.endswith(suff):
-                            rezult = True
-                            name.ending = suff
-                            break
-                    else:
-                        rezult = False
-                        return None
-                    break
-                else:
-                    rezult = False
-            elif len(word) - len(key) < 3:  # the first form of name
-                for suff in endings.endings[nameMap[key][""]]:
-                    if word.endswith(suff):
-                        rezult = True
-                        name.ending = suff
-                        break
-                    else:
-                        rezult = False
-                        return None
-    return name
+                for subSuff in nameMap[key]:
+                    endingIndex = nameMap[key][subSuff]
+                    for ending in endings.endings[endingIndex]:
+                        if ending == "~":  # 0 case (Imenitel'ny)
+                            ending = ""
+                        if (word == key + subSuff + ending):
+                            return Name("", key, subSuff, ending)
+    return None
 
 
 def get_case(name):
