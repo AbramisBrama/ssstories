@@ -24,10 +24,11 @@ class Name:
             for ending in case:
                 if raw_word.endswith(ending):
                     curr_ending = ending
+                    break
         for nameMap in names.names:
             for key in nameMap:
                 for suffix in nameMap[key].keys():
-                    if raw_word.startswith(key+suffix):
+                    if raw_word.startswith(key+suffix+curr_ending):
                         curr_name = key
                         curr_suff = suffix
         if curr_name == "":
