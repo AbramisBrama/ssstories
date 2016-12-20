@@ -6,3 +6,5 @@ script:
   - python -m unittest test.testAnalyser
   - python -m unittest test.testEditor
   - python -m unittest test.testName
+  - python -m unittest test.testGenerator
+  

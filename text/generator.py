@@ -4,6 +4,7 @@ import os
 import random
 import codecs
 import text.analyser
+import os.path
 
 
 def text_contains_name(text_for_story):
@@ -17,12 +18,12 @@ def text_contains_name(text_for_story):
     return result
 
 def get_text():
-    directory = 'Data\\texts'
+    directory = './/Data//texts'
 
-    files = os.listdir(directory)
+    files = os.listdir(os.path.normpath(directory))
 
-    rndFilePath = directory + '\\' + random.choice(files)
-
+    rndFilePath = os.path.normpath(directory + '//' + random.choice(files))
+    
     rndfile = codecs.open(rndFilePath, "r", "utf_8_sig")
 
     abzats_num = 0
@@ -48,17 +49,23 @@ def get_text():
             break
 
     result_string = ''
+    tries_counter = 0
 
     while not text_contains_name(result_string):
         random_abzats = random.randint(0, max_abzats_num)
         result_symb_count = 0
+        tries_counter = tries_counter+1
         line = rndfile.readlines()
-        for paragraph in paragraphs[random_abzats - 1:]:
-            result_symb_count = result_symb_count + paragraph[1]
-            if result_symb_count < max_symb_count:
-                result_string = result_string + paragraph[3]
-            else:
-                break
+        if tries_counter > max_abzats_num:
+            result_string = 'None'
+            break
+        else:
+            for paragraph in paragraphs[random_abzats - 1:]:
+                result_symb_count = result_symb_count + paragraph[1]
+                if result_symb_count < max_symb_count:
+                    result_string = result_string + paragraph[3]
+                else:
+                    break
 
     rndfile.close()
 
