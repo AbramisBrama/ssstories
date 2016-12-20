@@ -7,6 +7,7 @@ from text.name import Name
 
 class TestAnalyser(unittest.TestCase):
     def test_is_name(self):
+        self.assertTrue(text.analyser.is_name("Виктор"))
         self.assertFalse(text.analyser.is_name("WEefwe"))
         self.assertFalse(text.analyser.is_name(" "))
         self.assertFalse(text.analyser.is_name("324"))
