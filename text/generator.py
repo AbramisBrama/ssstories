@@ -5,7 +5,8 @@ import random
 import codecs
 import text.analyser
 import os.path
-
+import analyser
+import names
 
 def text_contains_name(text_for_story):
     result = False
@@ -71,4 +72,8 @@ def get_text():
 
     return result_string
 
-print(get_text())
+# print(get_text()) - WTF?
+
+def get_ss_name(name, ss_id):
+    curr_case = analyser.get_case(name)
+    return names.ssnames[ss_id][curr_case]

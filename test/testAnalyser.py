@@ -32,11 +32,11 @@ class TestAnalyser(unittest.TestCase):
 
     def test_get_case(self):
         name = Name("на", "Кост", "", "е")
-        self.assertEqual(text.analyser.get_case(name), 2)
+        self.assertEqual(text.analyser.get_case(name), 3)
         name = Name("", "Виктор", "", "")
         self.assertEqual(text.analyser.get_case(name), 0)
         name = Name("", "Дим", "он", "ом")
-        self.assertEqual(text.analyser.get_case(name), 5)
+        self.assertEqual(text.analyser.get_case(name), 4)
 
     def test_get_name(self):
         word = "Петькой"
