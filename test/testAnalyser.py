@@ -31,9 +31,12 @@ class TestAnalyser(unittest.TestCase):
                           'сказал', ' ', 'Отец', '!'])
 
     def test_get_case(self):
-        name = Name("", "", "", "")
-        name.preposition = "на"
-        name.text = "Коле"
+        name = Name("на", "Кост", "", "е")
+        self.assertEqual(text.analyser.get_case(name), 3)
+        name = Name("", "Виктор", "", "")
+        self.assertEqual(text.analyser.get_case(name), 0)
+        name = Name("", "Дим", "он", "ом")
+        self.assertEqual(text.analyser.get_case(name), 4)
 
     def test_get_name(self):
         word = "Петькой"
