@@ -58,3 +58,6 @@ target/
 
 #Idea files
 .idea/
+
+#vk.com credentials
+vk/vk_conf.py
