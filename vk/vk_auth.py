@@ -100,3 +100,4 @@ def auth(email, password, client_id, scope):
     if "access_token" not in answer or "user_id" not in answer:
         raise RuntimeError("Missing some values in answer")
     return answer["access_token"], answer["user_id"]
+
