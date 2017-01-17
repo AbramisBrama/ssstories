@@ -30,7 +30,45 @@ def get_name(word):
 
 
 def get_case(name):
-    return 0
+
+    correct_endings = set()
+    correct_prepositions = set()
+
+    curr_preposition = name.preposition
+    if curr_preposition == "":
+        curr_preposition = "~"
+
+    curr_case = 0
+    for case_preps in cases.prepositions:
+        for curr_prep in case_preps:
+            if curr_preposition == curr_prep:
+                correct_prepositions.add(curr_case)
+        curr_case += 1
+
+    curr_ending = name.ending
+    if curr_ending == "":
+        curr_ending = "~"
+
+    curr_ending_id = 0
+    for nameMap in names.names:
+        if name.name in nameMap:
+            suffMap = nameMap[name.name]
+            if name.suffix in suffMap:
+                curr_ending_id = suffMap[name.suffix]
+            else:  # name not found
+                return None
+
+    curr_case = 0
+    for ending in endings.endings[curr_ending_id]:
+        if curr_ending == ending:
+            correct_endings.add(curr_case)
+        curr_case += 1
+
+    rez = correct_endings.intersection(correct_prepositions)
+    if len(rez) == 1:
+        return list(rez)[0]
+    else:
+        return None
 
 
 def get_structured_sentence(sentence):
