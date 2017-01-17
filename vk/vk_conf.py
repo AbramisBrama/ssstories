@@ -1,0 +1,1 @@
+credentials = dict(email='your@mail', passwd='yourpasswd')

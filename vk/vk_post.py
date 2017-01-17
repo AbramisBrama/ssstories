@@ -7,6 +7,7 @@ from urllib import parse
 import os
 import getpass
 import sys
+import vk.vk_conf
 
 
 def call_api(method, params, token):
@@ -25,9 +26,9 @@ def wallpost(group_id, message, post_auth, token):
 directory = None
 if len(sys.argv) == 2:
     directory = sys.argv[1]
-email = "your@mail.com"
+email = vk.vk_conf.credentials.get('email')
 #password = getpass.getpass()
-password = "your_pass"
+password = vk.vk_conf.credentials.get('passwd')
 client_id = "5703171" # Vk application ID
 group_id = "-106824176"
 message = "АВТОМАТИЧЕСКИЕ ПРИВЕТИКИ"
