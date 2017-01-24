@@ -5,8 +5,9 @@ import random
 import codecs
 import text.analyser
 import os.path
-import analyser
-import names
+from text import analyser
+from namedata import names
+from random import randint
 
 def text_contains_name(text_for_story):
     result = False
@@ -77,3 +78,33 @@ def get_text():
 def get_ss_name(name, ss_id):
     curr_case = analyser.get_case(name)
     return names.ssnames[ss_id][curr_case]
+
+def get_name_index(name_object):
+    curr_index = 0
+    for nameMap in names.names:
+        if name_object.name in nameMap:
+            return curr_index
+        else:
+            curr_index += 1
+
+def get_ss_sentence(normal_sentence):
+    names_to_ss_map = {}
+    structured_sentence = text.analyser.get_structured_sentence(normal_sentence)
+    curr_position = 0
+    for word in structured_sentence:
+        if analyser.is_name(word):
+            name_object = analyser.get_name(word)
+            name_object.preposition = analyser.get_preposition(structured_sentence, curr_position)
+            print(name_object.preposition, name_object.name, name_object.suffix, name_object.ending, analyser.get_case(name_object))
+            name_index = get_name_index(name_object)
+            if name_index not in names_to_ss_map:
+                ss_name_index = randint(0, len(names.ssnames)-1)
+                names_to_ss_map[name_index] = ss_name_index
+                structured_sentence[curr_position] = get_ss_name(name_object, ss_name_index)
+        curr_position += 1
+
+def get_printable_sentence(structured_sentence):
+    rez = ""
+    for word in structured_sentence:
+        rez+=word
+    return rez
