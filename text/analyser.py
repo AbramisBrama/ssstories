@@ -87,7 +87,10 @@ def get_structured_sentence(sentence):
 
 
 def get_preposition(sentence, name_index):
-    structured_sentence = get_structured_sentence(sentence)
+    if isinstance(sentence, str):
+        structured_sentence = get_structured_sentence(sentence)
+    else:
+        structured_sentence = sentence
     if name_index > len(structured_sentence) or not is_name(structured_sentence[name_index]):
         return None
     prepositions_set = set()
