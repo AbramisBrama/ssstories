@@ -54,9 +54,6 @@ def auth(email, password, client_id, scope):
             "client_id=%s&scope=%s&display=wap" % (client_id, ",".join(scope))
             )
 
-        # Пример запроса
-        # https://oauth.vk.com/authorize?client_id=5703171&display=page&redirect_uri=https://oauth.vk.com/blank.html&scope=wall&response_type=token&v=5.52
-
         doc = response.read()
         vkparser = FormParser()
         vkparser.feed(doc.decode('utf-8'))
@@ -103,9 +100,3 @@ def auth(email, password, client_id, scope):
     if "access_token" not in answer or "user_id" not in answer:
         raise RuntimeError("Missing some values in answer")
     return answer["access_token"], answer["user_id"]
-
-#Пример запроса
-#https://oauth.vk.com/authorize?client_id=5703171&display=page&redirect_uri=https://oauth.vk.com/blank.html&scope=wall&response_type=token&v=5.52
-
-#Пример ответа
-#https://oauth.vk.com/blank.html#access_token=b61d9b1104aa4167b6d78f808777d3d26e3d8c7c2d3a53c802c62b5236cc93bc50edeea81eae594b3ee8e&expires_in=86400&user_id=163222298
