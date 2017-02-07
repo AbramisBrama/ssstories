@@ -34,3 +34,4 @@ def wallpost():
     token, user_id = vk.vk_auth.auth(email, password, client_id, "wall")
     result = call_api("wall.post", [("owner_id", group_id),("message",message),("from_group",post_auth)], token)
     return result
+
