@@ -74,7 +74,6 @@ def get_text():
 
     return result_string
 
-
 def get_ss_name(name, ss_id):
     curr_case = analyser.get_case(name)
     return names.ssnames[ss_id][curr_case]
@@ -111,3 +110,4 @@ def get_printable_sentence(structured_sentence):
     for word in structured_sentence:
         rez += word
     return rez
+
