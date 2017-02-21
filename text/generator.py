@@ -21,7 +21,7 @@ def text_contains_name(text_for_story):
 
 
 def get_text():
-    directory = './/Data//texts'
+    directory = '..//Data//texts'
 
     files = os.listdir(os.path.normpath(directory))
 
@@ -101,6 +101,8 @@ def get_ss_sentence(normal_sentence):
                 ss_name_index = randint(0, len(names.ssnames) - 1)
                 names_to_ss_map[name_index] = ss_name_index
                 structured_sentence[curr_position] = get_ss_name(name_object, ss_name_index)
+            else:
+                structured_sentence[curr_position] = get_ss_name(name_object, names_to_ss_map[name_index])
         curr_position += 1
     return structured_sentence
 

@@ -27,7 +27,9 @@ def wallpost():
     password = vk.vk_conf.credentials.get('passwd')
     client_id = "5703171"  # Vk application ID
     group_id = "-106824176"
-    message = text.generator.get_text()
+    post = text.generator.get_text()
+    ss_sentence = text.generator.get_ss_sentence(post)
+    message = text.generator.get_printable_sentence(ss_sentence)
     post_auth = "1"
     token, user_id = vk.vk_auth.auth(email, password, client_id, "wall")
     result = call_api("wall.post", [("owner_id", group_id),("message",message),("from_group",post_auth)], token)
