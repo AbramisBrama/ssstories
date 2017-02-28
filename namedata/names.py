@@ -1,5 +1,15 @@
 # -*- coding: utf-8 -*-
 
+"""
+This module contains two lists of Russian and Nazi names:
+
+* Russian names is a list of maps, where:
+    - key is a main part of name (root);
+    - value - another map, where:
+        - key is a possible suffix for a name;
+        - value - is the index of corresponding name endings for all cases from module endings
+
+"""
 names = [{
     "Владимир": {"": 0},
     "Вов": {"": 1, "к": 2, "ан": 0, "очк": 2},

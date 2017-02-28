@@ -10,9 +10,25 @@ Welcome to ssstories's documentation!
    :maxdepth: 3
    :caption: Contents:
 
+Module: namedata.cases
+----------------------
 .. automodule:: namedata.cases
    :members:
 
+Module: namedata.endings
+------------------------
+.. automodule:: namedata.endings
+   :members:
+
+Module: namedata.names
+----------------------
+.. automodule:: namedata.names
+   :members:
+
+Module: namedata.separators
+---------------------------
+.. automodule:: namedata.separators
+   :members:
 
 Indices and tables
 ==================

@@ -4,11 +4,14 @@
 This module contains well known prepositions lists for all cases of Russian nouns.
 It is a simple 2-dimension list, where each item corresponds to a case:
 
-0 - Imenitelny,
-...
-6 - Tvoritelny.
+0. Imenitelny;
+1. Roditelny;
+2. Datelny;
+3. Vinitelny;
+4. Tvoritelny;
+5. Predlozhny
 
-Tilde symbol ("~") means, that a word in current case may not have a preposition.
+Tilde symbol ("~") in the list of prepositions means, that a word in current case may not have a preposition at all.
 """
 prepositions = (
     ("~"),
