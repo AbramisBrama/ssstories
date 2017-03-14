@@ -1,5 +1,10 @@
 # -*- coding: utf-8 -*-
 
+"""
+
+This module contains functions to generate random text fragments, restricted with some conditions. And to replace character names in this fragments.
+
+"""
 import os
 import codecs
 import os.path
@@ -10,6 +15,12 @@ from random import randint
 
 
 def text_contains_name(text_for_story):
+    """
+    This functions checks if there are any names in generated fragment.
+
+    :param text_for_story: type - string, text fragment to check for containing names in it.
+    :return: True if text_for_story contains name and False if not.
+    """
     result = False
     word = ' '
     words_array = analyser.get_structured_sentence(text_for_story)
@@ -21,6 +32,17 @@ def text_contains_name(text_for_story):
 
 
 def get_text():
+    """
+    This function selects random text file from Data/text folder. And then cuts form it text fragment that should satisfy the conditions below.
+
+*   Conditions:
+
+    - symbols count between 780 and 1000;
+    - paragraph should be solid (all sentences should be ended);
+    - text fragment should contain at least one name;
+
+    :return: text fragment (type string) that satisfies the conditions above
+    """
     directory = '..//Data//texts'
 
     files = os.listdir(os.path.normpath(directory))
@@ -75,11 +97,24 @@ def get_text():
     return result_string
 
 def get_ss_name(name, ss_id):
+    """
+    This function returns name of defined nazi leader in a proper case
+
+    :param name: type - string. Name of a character.
+    :param ss_id: type - int. Index for defined nazi name.
+    :return: name of defined nazi leader in a proper case
+    """
     curr_case = analyser.get_case(name)
     return names.ssnames[ss_id][curr_case]
 
 
 def get_name_index(name_object):
+    """
+    This function returns index for given name in a names map from namedata module
+
+    :param name_object: type - Name class object.
+    :return: index for given name object in a names map from namedata module
+    """
     curr_index = 0
     for nameMap in names.names:
         if name_object.name in nameMap:
@@ -89,6 +124,12 @@ def get_name_index(name_object):
 
 
 def get_ss_sentence(normal_sentence):
+    """
+    This function get source text fragment and changes every usual name in it to nazi name.
+
+    :param normal_sentence: type - string. Source text fragment.
+    :return: Source text fragment with every usual name changed to nazi name. Type is a list.
+    """
     names_to_ss_map = {}
     structured_sentence = analyser.get_structured_sentence(normal_sentence)
     curr_position = 0
@@ -108,6 +149,12 @@ def get_ss_sentence(normal_sentence):
 
 
 def get_printable_sentence(structured_sentence):
+    """
+    This function converts list of strings to one solid string
+
+    :param structured_sentence: type - list of strings
+    :return: strings concatenation
+    """
     rez = ""
     for word in structured_sentence:
         rez += word

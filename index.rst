@@ -66,6 +66,11 @@ Module: :mod:`text.name`
     :undoc-members:
     :show-inheritance:
 
+Module: text.generator
+---------------------------
+.. automodule:: text.generator
+   :members:
+   
 Indices and tables
 ==================
 
