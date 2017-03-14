@@ -3,12 +3,21 @@
 from namedata import names
 from namedata import endings
 
-
+"""
+This module contains a definition of Name class
+"""
 class Name:
+    """
+        Class is used to store structured information about the name
+    """
     name = ""
+    """Main part of the name"""
     suffix = ""
+    """Suffix of the name"""
     preposition = ""
+    """Preposition of the name"""
     ending = ""
+    """Suffix of the name"""
 
     def __init__(self, preposition, name, suffix, ending):
         self.preposition = preposition
@@ -17,6 +26,12 @@ class Name:
         self.ending = ending
 
     def parse(raw_word: str) -> object:
+        """
+        Instantiate the Name with a raw string word
+
+        :param raw_word: The string that contains one word - name.
+        :return: Name instance.
+        """
         curr_ending = ""
         curr_name = ""
         curr_suff = ""
@@ -28,7 +43,7 @@ class Name:
         for nameMap in names.names:
             for key in nameMap:
                 for suffix in nameMap[key].keys():
-                    if raw_word.startswith(key+suffix+curr_ending):
+                    if raw_word.startswith(key + suffix + curr_ending):
                         curr_name = key
                         curr_suff = suffix
         if curr_name == "":

@@ -6,14 +6,28 @@ from namedata import separators
 from namedata import cases
 from text.name import Name
 
-
+"""
+This module contains a set of functions for names analysis
+"""
 def is_name(word):
+    """
+        This function checks whether the word is a name or not.
+
+        :param word:  The word to check.
+        :return: True in case of word is a name, False - if not.
+    """
     if not isinstance(word, str):
         return False
     return get_name(word) is not None
 
 
 def get_name(word):
+    """
+        This function instantiates a Name class from the word.
+
+        :param word:  The word to construct a Name.
+        :return: Name instance if the word is a name, None - if not.
+    """
     if not isinstance(word, str):
         return None
     for nameMap in names.names:
@@ -30,7 +44,12 @@ def get_name(word):
 
 
 def get_case(name):
+    """
+        This function analyses a case of the name.
 
+        :param name: The Name instance.
+        :return: integer index of case from :mod:`namedata.cases`.
+    """
     correct_endings = set()
     correct_prepositions = set()
 
@@ -72,6 +91,12 @@ def get_case(name):
 
 
 def get_structured_sentence(sentence):
+    """
+        This function divides the sentence string into the list of words and delimiters.
+
+        :param sentence: The string containing a sentence. Must end with a dot.
+        :return: the list of sentence's words and delimiters from :mod:`namedata.separators`.
+    """
     seps = separators.get_separators()
     buf = ""
     rez = []
@@ -87,6 +112,13 @@ def get_structured_sentence(sentence):
 
 
 def get_preposition(sentence, name_index):
+    """
+        This function finds a preposition of given word in the sentence.
+
+        :param sentence: The string containing a sentence or the structured sentence.
+        :param name_index: The index of name in the sentence from 0 including separators.
+        :return: the preposition from :mod:`namedata.prepositions`.
+    """
     if isinstance(sentence, str):
         structured_sentence = get_structured_sentence(sentence)
     else:

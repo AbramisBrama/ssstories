@@ -10,25 +10,61 @@ Welcome to ssstories's documentation!
    :maxdepth: 3
    :caption: Contents:
 
-Module: namedata.cases
-----------------------
+Module: :mod:`namedata.cases`
+-----------------------------
 .. automodule:: namedata.cases
-   :members:
+    :members:
+    :undoc-members:
+    :show-inheritance:
 
-Module: namedata.endings
-------------------------
+Module: :mod:`namedata.endings`
+-------------------------------
 .. automodule:: namedata.endings
-   :members:
+    :members:
+    :undoc-members:
+    :show-inheritance:
 
-Module: namedata.names
-----------------------
+Module: :mod:`namedata.names`
+-----------------------------
 .. automodule:: namedata.names
-   :members:
+    :members:
+    :undoc-members:
+    :show-inheritance:
 
-Module: namedata.separators
----------------------------
+Module: :mod:`namedata.separators`
+----------------------------------
 .. automodule:: namedata.separators
-   :members:
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+Module: :mod:`text.analyser`
+----------------------------
+.. automodule:: text.analyser
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+Module: :mod:`text.editor`
+--------------------------
+.. automodule:: text.editor
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+Module: :mod:`text.generator`
+-----------------------------
+.. automodule:: text.generator
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+Module: :mod:`text.name`
+------------------------
+.. automodule:: text.name
+    :members:
+    :undoc-members:
+    :show-inheritance:
 
 Indices and tables
 ==================
