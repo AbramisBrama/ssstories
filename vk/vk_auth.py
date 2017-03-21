@@ -1,4 +1,10 @@
 # -*- coding: utf-8 -*-
+"""
+
+This module simulates web-browser to pass the vk authorization and get temporary authentication credentials.
+
+"""
+
 
 import http.cookiejar
 from html.parser import HTMLParser
@@ -6,6 +12,11 @@ import urllib
 from urllib import parse
 
 class FormParser(HTMLParser):
+    """
+
+    Class is used to handle vk.com start page (authorization page)
+
+    """
     def __init__(self):
         HTMLParser.__init__(self)
         self.url = None
@@ -15,6 +26,12 @@ class FormParser(HTMLParser):
         self.method = "GET"
 
     def handle_starttag(self, tag, attrs):
+        """
+        Function to find where does authorization form begins.
+        :param tag: HTML tag
+        :param attrs:
+        :return:
+        """
         tag = tag.lower()
         if tag == "form":
             if self.form_parsed:
@@ -34,6 +51,12 @@ class FormParser(HTMLParser):
                 self.params[attrs["name"]] = attrs["value"] if "value" in attrs else ""
 
     def handle_endtag(self, tag):
+        """
+        Function to find where authorization form ends
+
+        :param tag: HTML tag
+        :return:
+        """
         tag = tag.lower()
         if tag == "form":
             if not self.in_form:

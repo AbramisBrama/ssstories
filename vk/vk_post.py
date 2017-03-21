@@ -1,5 +1,9 @@
 # -*- coding: UTF-8 -*-
 
+"""
+This module contains functions to construct and execute request for vk.com API to post a story on a public wall.
+"""
+
 import vk.vk_auth
 import json
 import urllib
@@ -10,6 +14,14 @@ import text.generator
 
 
 def call_api(method, params, token):
+    """
+    This function constructs http POST request for vk.vom and gets response from API
+
+    :param method: vk api method
+    :param params: parameters to pass for vk api method
+    :param token: authentication token for vk
+    :return: call api result (wall post id, for example)
+    """
     params.append(("access_token", token))
     params.append(("v", "5.60"))
     encoded_params = bytes(urllib.parse.urlencode(params).encode())
@@ -20,6 +32,11 @@ def call_api(method, params, token):
     return json.loads(result)["response"]
 
 def wallpost():
+    """
+    This function gets all the parameters for wall post api call and passes them to call_api function
+
+    :return: wall post id
+    """
     directory = None
     if len(sys.argv) == 2:
         directory = sys.argv[1]
