@@ -43,7 +43,7 @@ def get_text():
 
     :return: text fragment (type string) that satisfies the conditions above
     """
-    directory = '..//Data//texts'
+    directory = 'Data//texts'
 
     files = os.listdir(os.path.normpath(directory))
 
@@ -159,4 +159,5 @@ def get_printable_sentence(structured_sentence):
     for word in structured_sentence:
         rez += word
     return rez
+
 
