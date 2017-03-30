@@ -50,3 +50,6 @@ class Name:
             return None
         else:
             return Name("", curr_name, curr_suff, curr_ending)
+
+    def print(self):
+        return self.name+self.suffix+self.ending

@@ -3,9 +3,10 @@
 import unittest
 import text.morph_analyser
 from text.name import Name
+from namedata import cases
 
 
-class Testmorph_Analyser(unittest.TestCase):
+class TestMorphAnalyser(unittest.TestCase):
     def test_is_name(self):
         self.assertTrue(text.morph_analyser.is_name("Виктор"))
         self.assertFalse(text.morph_analyser.is_name("WEefwe"))
@@ -32,29 +33,13 @@ class Testmorph_Analyser(unittest.TestCase):
                           'сказал', ' ', 'Отец', '!'])
 
     def test_get_case(self):
-        name = Name("на", "Кост", "", "е")
-        self.assertEqual(text.morph_analyser.get_case(name), 5)
-        name = Name("", "Виктор", "", "")
-        self.assertEqual(text.morph_analyser.get_case(name), 0)
-        name = Name("", "Дим", "он", "ом")
-        self.assertEqual(text.morph_analyser.get_case(name), 4)
+        self.assertEqual(text.morph_analyser.get_case(Name("на", "Кост", "", "е")), 'loct')
+        self.assertEqual(text.morph_analyser.get_case(Name("", "Виктор", "", "")), 'nomn')
+        self.assertEqual(text.morph_analyser.get_case(Name("", "Евгени", "", "ем")), 'ablt')
+        self.assertEqual(text.morph_analyser.get_case(Name("без", "Вячеслав", "", "а")), 'gent')
 
     def test_get_name(self):
-        word = "Петькой"
-        self.assertEqual(text.morph_analyser.get_name(word).name, "Пет")
-        self.assertEqual(text.morph_analyser.get_name(word).suffix, "ьк")
-        self.assertEqual(text.morph_analyser.get_name(word).ending, "ой")
-
-        word = "Володя"
-        self.assertEqual(text.morph_analyser.get_name(word).name, "Волод")
-        self.assertEqual(text.morph_analyser.get_name(word).suffix, "")
-        self.assertEqual(text.morph_analyser.get_name(word).ending, "я")
-
-        word = "Витеньку"
-        self.assertEqual(text.morph_analyser.get_name(word).name, "Вит")
-        self.assertEqual(text.morph_analyser.get_name(word).suffix, "еньк")
-        self.assertEqual(text.morph_analyser.get_name(word).ending, "у")
-
+        self.assertEqual(text.morph_analyser.get_name("Петькой").print(), "Петькой")
         self.assertIsNone(text.morph_analyser.get_name("Псина"))
 
     def test_get_preposition(self):
@@ -62,6 +47,12 @@ class Testmorph_Analyser(unittest.TestCase):
         self.assertEqual(text.morph_analyser.get_preposition("Без Володи мы все умрём.", 2), "без")
         self.assertEqual(text.morph_analyser.get_preposition("Чёрный Димон выхватил кинжал.", 2), "")
         self.assertIsNone(text.morph_analyser.get_preposition("Куоцуа жцуадл цуа.", 5))
+
+    def test_is_preposition(self):
+        for case_prep in cases.prepositions:
+            for prep in case_prep:
+                if not prep == '~':
+                    self.assertTrue(text.morph_analyser.is_preposition(prep))
 
 
 if __name__ == '__main__':

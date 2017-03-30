@@ -13,6 +13,8 @@ morph = pymorphy2.MorphAnalyzer()
 """
 This module contains a set of functions for names analysis
 """
+
+
 def is_name(word):
     """
         This function checks whether the word is a name or not.
@@ -26,12 +28,8 @@ def is_name(word):
     if not isinstance(word, str):
         return False
 
-    parsed_name = morph.parse(word)
-
-    for i in parsed_name:
-        if ('Name' in i.tag):
-            return True
-    return False
+    # 'Name' grammem must be in the most probable parsed case
+    return 'Name' in morph.parse(word)[0].tag
 
 
 def get_name(word):
@@ -41,19 +39,10 @@ def get_name(word):
         :param word:  The word to construct a Name.
         :return: Name instance if the word is a name, None - if not.
     """
-    if not isinstance(word, str):
+    if not is_name(word):
         return None
-    for nameMap in names.names:
-        for key in nameMap:
-            if word.startswith(key):
-                for subSuff in nameMap[key]:
-                    endingIndex = nameMap[key][subSuff]
-                    for ending in endings.endings[endingIndex]:
-                        if ending == "~":  # 0 case (Imenitel'ny)
-                            ending = ""
-                        if (word == key + subSuff + ending):
-                            return Name("", key, subSuff, ending)
-    return None
+
+    return Name("", word, "", "")
 
 
 def get_case(name):
@@ -63,44 +52,19 @@ def get_case(name):
         :param name: The Name instance.
         :return: integer index of case from :mod:`namedata.cases`.
     """
-    correct_endings = set()
-    correct_prepositions = set()
-
-    curr_preposition = name.preposition
-    if curr_preposition == "":
-        curr_preposition = "~"
-
-    curr_case = 0
-    for case_preps in cases.prepositions:
-        for curr_prep in case_preps:
-            if curr_preposition == curr_prep:
-                correct_prepositions.add(curr_case)
-        curr_case += 1
-
-    curr_ending = name.ending
-    if curr_ending == "":
-        curr_ending = "~"
-
-    curr_ending_id = 0
-    for nameMap in names.names:
-        if name.name in nameMap:
-            suffMap = nameMap[name.name]
-            if name.suffix in suffMap:
-                curr_ending_id = suffMap[name.suffix]
-            else:  # name not found
-                return None
-
-    curr_case = 0
-    for ending in endings.endings[curr_ending_id]:
-        if curr_ending == ending:
-            correct_endings.add(curr_case)
-        curr_case += 1
-
-    rez = correct_endings.intersection(correct_prepositions)
-    if len(rez) == 1:
-        return list(rez)[0]
-    else:
+    if not is_name(name.print()):
         return None
+
+    parsed_name = morph.parse(name.print())
+    if len(parsed_name) > 1:
+        possible_cases = set()
+        for name_case in parsed_name:
+            possible_cases.add(name_case.tag.case)
+        for case in possible_cases:
+            if name.preposition in cases.prepositions[cases.morph_case_index[case]]:
+                return case
+        return None  # case not found
+    return morph.parse(name.print())[0].tag.case
 
 
 def get_structured_sentence(sentence):
@@ -155,6 +119,5 @@ def get_preposition(sentence, name_index):
     return word.lower()
 
 
-
-
-
+def is_preposition(word):
+    return 'PREP' in morph.parse(word)[0].tag
