@@ -1,6 +1,9 @@
 from namedata import names, cases
 from text import morph_analyser
 from random import randint
+import pymorphy2
+
+morph = pymorphy2.MorphAnalyzer()
 
 def get_ss_name(name, ss_id):
     """
@@ -21,12 +24,15 @@ def get_name_index(name_object):
     :param name_object: type - Name class object.
     :return: index for given name object in a names map from namedata module
     """
-    curr_index = 0
-    for nameMap in names.names:
-        if name_object.name in nameMap:
-            return curr_index
-        else:
-            curr_index += 1
+#   curr_index = 0
+#    for nameMap in names.names:
+#        if name_object.name in nameMap:
+#            return curr_index
+#        else:
+#            curr_index += 1
+
+    parsed = morph.parse(name_object.name)
+    return parsed[0].normal_form
 
 
 def get_ss_sentence(normal_sentence):

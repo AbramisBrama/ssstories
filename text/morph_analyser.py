@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 
-from namedata import names
-from namedata import endings
 from namedata import separators
 from namedata import cases
 from text.name import Name
