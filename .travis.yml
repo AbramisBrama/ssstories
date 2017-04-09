@@ -2,6 +2,10 @@ language: python
 python:
   - 3.2
   - 3.3
+install:
+  - pip install pymorphy2
+  - pip install pymorphy2-dicts
+  - pip install DAWG-Python
 script:
   - python -m unittest test.testAnalyser
   - python -m unittest test.testEditor
