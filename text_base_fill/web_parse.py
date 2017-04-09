@@ -4,7 +4,7 @@ import urllib.request
 from html.parser import HTMLParser
 
 """
-This module contains class to parse web 1.0 site and fill local texts base with new source texts for reichization.
+This is a simple utility to parse web 1.0 site and fill local texts base with new source texts for reichization.
 """
 
 class NarodStoryParser(HTMLParser):
