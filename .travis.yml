@@ -6,9 +6,25 @@ install:
   - pip install pymorphy2
   - pip install pymorphy2-dicts
   - pip install DAWG-Python
+  - pip3 install Sphinx
 script:
   - python -m unittest test.testAnalyser
   - python -m unittest test.testEditor
   - python -m unittest test.testName
   - python -m unittest test.testGenerator
-  
+after_success: |
+  if [ -n "$GITHUB_TOKEN" ]; then
+    cd "$TRAVIS_BUILD_DIR"
+    # This generates a `web` directory containing the website.
+    make html
+    git checkout https://github.com/AbramisBrama/ssstories.git
+    cd ssstories
+    git checkout gh-pages
+    mv ../_build/html/* ./
+    git add .
+    git -c user.name='travis' -c user.email='travis@travis-ci.org' commit -m "Update docs with Travis CI"
+    # Make sure to make the output quiet, or else the API token will leak!
+    # This works because the API key can replace your password.
+    git push https://$GITHUB_TOKEN@github.com/AbramisBrama/ssstories.git gh-pages
+    cd "$TRAVIS_BUILD_DIR"
+  fi
