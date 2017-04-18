@@ -17,7 +17,7 @@ after_success: |
     cd "$TRAVIS_BUILD_DIR"
     # This generates a `web` directory containing the website.
     make html
-    git checkout https://github.com/AbramisBrama/ssstories.git
+    git clone https://github.com/AbramisBrama/ssstories.git
     cd ssstories
     git checkout gh-pages
     mv ../_build/html/* ./
