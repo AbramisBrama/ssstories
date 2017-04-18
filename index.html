@@ -1,0 +1,661 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Welcome to ssstories’s documentation! &#8212; ssstories 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="welcome-to-ssstories-s-documentation">
+<h1>Welcome to ssstories&#8217;s documentation!<a class="headerlink" href="#welcome-to-ssstories-s-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<div class="section" id="module-namedata.cases">
+<span id="module-namedata-cases"></span><h2>Module: <a class="reference internal" href="#module-namedata.cases" title="namedata.cases"><code class="xref py py-mod docutils literal"><span class="pre">namedata.cases</span></code></a><a class="headerlink" href="#module-namedata.cases" title="Permalink to this headline">¶</a></h2>
+<p>This module contains well known prepositions lists for all cases of Russian nouns.
+It is two simple 2-dimension list, where each item corresponds to a case:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="36%" />
+<col width="56%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>n/n</td>
+<td>Case</td>
+<td>Pymorphy case name</td>
+</tr>
+<tr class="row-even"><td>0</td>
+<td>Imenitelny</td>
+<td>nomn</td>
+</tr>
+<tr class="row-odd"><td>1</td>
+<td>Roditelny</td>
+<td>gent, gen2</td>
+</tr>
+<tr class="row-even"><td>2</td>
+<td>Datelny</td>
+<td>datv</td>
+</tr>
+<tr class="row-odd"><td>3</td>
+<td>Vinitelny</td>
+<td>accs, acc2</td>
+</tr>
+<tr class="row-even"><td>4</td>
+<td>Tvoritelny</td>
+<td>ablt</td>
+</tr>
+<tr class="row-odd"><td>5</td>
+<td>Predlozhny</td>
+<td>loct, loc2</td>
+</tr>
+</tbody>
+</table>
+<p>Tilde symbol (&#8220;~&#8221;) in the list of prepositions means, that a word in current case may not have a preposition at all.</p>
+</div>
+<div class="section" id="module-namedata.endings">
+<span id="module-namedata-endings"></span><h2>Module: <a class="reference internal" href="#module-namedata.endings" title="namedata.endings"><code class="xref py py-mod docutils literal"><span class="pre">namedata.endings</span></code></a><a class="headerlink" href="#module-namedata.endings" title="Permalink to this headline">¶</a></h2>
+<p>This module contains well known endings lists for all cases of Russian nouns.
+It is a simple 2-dimension list, where each item corresponds to a case:</p>
+<ol class="arabic simple" start="0">
+<li>Imenitelny;</li>
+<li>Roditelny;</li>
+<li>Datelny;</li>
+<li>Vinitelny;</li>
+<li>Tvoritelny;</li>
+<li>Predlozhny</li>
+</ol>
+<p>Tilde symbol (&#8220;~&#8221;) means, that a word in current case may not have an ending (uses in the 1st form).</p>
+</div>
+<div class="section" id="module-namedata.names">
+<span id="module-namedata-names"></span><h2>Module: <a class="reference internal" href="#module-namedata.names" title="namedata.names"><code class="xref py py-mod docutils literal"><span class="pre">namedata.names</span></code></a><a class="headerlink" href="#module-namedata.names" title="Permalink to this headline">¶</a></h2>
+<p>This module contains two lists of Russian and Nazi names:</p>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt>Russian names is a list of maps, where:</dt>
+<dd><ul class="first last">
+<li>key is a main part of name (root);</li>
+<li><dl class="first docutils">
+<dt>value - another map, where:</dt>
+<dd><ul class="first last">
+<li>key is a possible suffix for a name;</li>
+<li>value - is the index of corresponding name endings for all cases from module endings</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="module-namedata.separators">
+<span id="module-namedata-separators"></span><h2>Module: <a class="reference internal" href="#module-namedata.separators" title="namedata.separators"><code class="xref py py-mod docutils literal"><span class="pre">namedata.separators</span></code></a><a class="headerlink" href="#module-namedata.separators" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="namedata.separators.get_separators">
+<code class="descclassname">namedata.separators.</code><code class="descname">get_separators</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#namedata.separators.get_separators" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">a list of possible separators between the words in any sentence.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-text.analyser">
+<span id="module-text-analyser"></span><h2>Module: <a class="reference internal" href="#module-text.analyser" title="text.analyser"><code class="xref py py-mod docutils literal"><span class="pre">text.analyser</span></code></a><a class="headerlink" href="#module-text.analyser" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="text.analyser.get_case">
+<code class="descclassname">text.analyser.</code><code class="descname">get_case</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#text.analyser.get_case" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function analyses a case of the name.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> &#8211; The Name instance.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">integer index of case from <a class="reference internal" href="#module-namedata.cases" title="namedata.cases"><code class="xref py py-mod docutils literal"><span class="pre">namedata.cases</span></code></a>.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="text.analyser.get_name">
+<code class="descclassname">text.analyser.</code><code class="descname">get_name</code><span class="sig-paren">(</span><em>word</em><span class="sig-paren">)</span><a class="headerlink" href="#text.analyser.get_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function instantiates a Name class from the word.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>word</strong> &#8211; The word to construct a Name.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Name instance if the word is a name, None - if not.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="text.analyser.get_preposition">
+<code class="descclassname">text.analyser.</code><code class="descname">get_preposition</code><span class="sig-paren">(</span><em>sentence</em>, <em>name_index</em><span class="sig-paren">)</span><a class="headerlink" href="#text.analyser.get_preposition" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function finds a preposition of given word in the sentence.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>sentence</strong> &#8211; The string containing a sentence or the structured sentence.</li>
+<li><strong>name_index</strong> &#8211; The index of name in the sentence from 0 including separators.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">the preposition from <code class="xref py py-mod docutils literal"><span class="pre">namedata.prepositions</span></code>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="text.analyser.get_structured_sentence">
+<code class="descclassname">text.analyser.</code><code class="descname">get_structured_sentence</code><span class="sig-paren">(</span><em>sentence</em><span class="sig-paren">)</span><a class="headerlink" href="#text.analyser.get_structured_sentence" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function divides the sentence string into the list of words and delimiters.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>sentence</strong> &#8211; The string containing a sentence. Must end with a dot.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">the list of sentence&#8217;s words and delimiters from <a class="reference internal" href="#module-namedata.separators" title="namedata.separators"><code class="xref py py-mod docutils literal"><span class="pre">namedata.separators</span></code></a>.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="text.analyser.is_name">
+<code class="descclassname">text.analyser.</code><code class="descname">is_name</code><span class="sig-paren">(</span><em>word</em><span class="sig-paren">)</span><a class="headerlink" href="#text.analyser.is_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function checks whether the word is a name or not.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>word</strong> &#8211; The word to check.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">True in case of word is a name, False - if not.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-text.editor">
+<span id="module-text-editor"></span><h2>Module: <a class="reference internal" href="#module-text.editor" title="text.editor"><code class="xref py py-mod docutils literal"><span class="pre">text.editor</span></code></a><a class="headerlink" href="#module-text.editor" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="text.editor.get_name_index">
+<code class="descclassname">text.editor.</code><code class="descname">get_name_index</code><span class="sig-paren">(</span><em>name_object</em><span class="sig-paren">)</span><a class="headerlink" href="#text.editor.get_name_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function returns index for given name in a names map from namedata module</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name_object</strong> &#8211; type - Name class object.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">index for given name object in a names map from namedata module</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="text.editor.get_printable_sentence">
+<code class="descclassname">text.editor.</code><code class="descname">get_printable_sentence</code><span class="sig-paren">(</span><em>structured_sentence</em><span class="sig-paren">)</span><a class="headerlink" href="#text.editor.get_printable_sentence" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function converts list of strings to one solid string</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>structured_sentence</strong> &#8211; type - list of strings</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">strings concatenation</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="text.editor.get_ss_name">
+<code class="descclassname">text.editor.</code><code class="descname">get_ss_name</code><span class="sig-paren">(</span><em>name</em>, <em>ss_id</em><span class="sig-paren">)</span><a class="headerlink" href="#text.editor.get_ss_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function returns name of defined nazi leader in a proper case</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>name</strong> &#8211; type - string. Name of a character.</li>
+<li><strong>ss_id</strong> &#8211; type - int. Index for defined nazi name.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">name of defined nazi leader in a proper case</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="text.editor.get_ss_sentence">
+<code class="descclassname">text.editor.</code><code class="descname">get_ss_sentence</code><span class="sig-paren">(</span><em>normal_sentence</em><span class="sig-paren">)</span><a class="headerlink" href="#text.editor.get_ss_sentence" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function get source text fragment and changes every usual name in it to nazi name.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>normal_sentence</strong> &#8211; type - string. Source text fragment.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Source text fragment with every usual name changed to nazi name. Type is a list.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-text.generator">
+<span id="module-text-generator"></span><h2>Module: <a class="reference internal" href="#module-text.generator" title="text.generator"><code class="xref py py-mod docutils literal"><span class="pre">text.generator</span></code></a><a class="headerlink" href="#module-text.generator" title="Permalink to this headline">¶</a></h2>
+<p>This module contains functions to generate random text fragments, restricted with some conditions. And to replace character names in this fragments.</p>
+<dl class="function">
+<dt id="text.generator.get_name_index">
+<code class="descclassname">text.generator.</code><code class="descname">get_name_index</code><span class="sig-paren">(</span><em>name_object</em><span class="sig-paren">)</span><a class="headerlink" href="#text.generator.get_name_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function returns index for given name in a names map from namedata module</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name_object</strong> &#8211; type - Name class object.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">index for given name object in a names map from namedata module</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="text.generator.get_printable_sentence">
+<code class="descclassname">text.generator.</code><code class="descname">get_printable_sentence</code><span class="sig-paren">(</span><em>structured_sentence</em><span class="sig-paren">)</span><a class="headerlink" href="#text.generator.get_printable_sentence" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function converts list of strings to one solid string</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>structured_sentence</strong> &#8211; type - list of strings</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">strings concatenation</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="text.generator.get_ss_name">
+<code class="descclassname">text.generator.</code><code class="descname">get_ss_name</code><span class="sig-paren">(</span><em>name</em>, <em>ss_id</em><span class="sig-paren">)</span><a class="headerlink" href="#text.generator.get_ss_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function returns name of defined nazi leader in a proper case</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>name</strong> &#8211; type - string. Name of a character.</li>
+<li><strong>ss_id</strong> &#8211; type - int. Index for defined nazi name.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">name of defined nazi leader in a proper case</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="text.generator.get_ss_sentence">
+<code class="descclassname">text.generator.</code><code class="descname">get_ss_sentence</code><span class="sig-paren">(</span><em>normal_sentence</em><span class="sig-paren">)</span><a class="headerlink" href="#text.generator.get_ss_sentence" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function get source text fragment and changes every usual name in it to nazi name.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>normal_sentence</strong> &#8211; type - string. Source text fragment.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Source text fragment with every usual name changed to nazi name. Type is a list.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="text.generator.get_text">
+<code class="descclassname">text.generator.</code><code class="descname">get_text</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#text.generator.get_text" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>This function selects random text file from Data/text folder. And then cuts form it text fragment that should satisfy the conditions below.</div></blockquote>
+<ul>
+<li><p class="first">Conditions:</p>
+<ul class="simple">
+<li>symbols count between 780 and 1000;</li>
+<li>paragraph should be solid (all sentences should be ended);</li>
+<li>text fragment should contain at least one name;</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">return:</th><td class="field-body">text fragment (type string) that satisfies the conditions above</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</dd></dl>
+
+<dl class="function">
+<dt id="text.generator.text_contains_name">
+<code class="descclassname">text.generator.</code><code class="descname">text_contains_name</code><span class="sig-paren">(</span><em>text_for_story</em><span class="sig-paren">)</span><a class="headerlink" href="#text.generator.text_contains_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>This functions checks if there are any names in generated fragment.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>text_for_story</strong> &#8211; type - string, text fragment to check for containing names in it.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">True if text_for_story contains name and False if not.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-text.name">
+<span id="module-text-name"></span><h2>Module: <a class="reference internal" href="#module-text.name" title="text.name"><code class="xref py py-mod docutils literal"><span class="pre">text.name</span></code></a><a class="headerlink" href="#module-text.name" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="text.name.Name">
+<em class="property">class </em><code class="descclassname">text.name.</code><code class="descname">Name</code><span class="sig-paren">(</span><em>preposition</em>, <em>name</em>, <em>suffix</em>, <em>ending</em><span class="sig-paren">)</span><a class="headerlink" href="#text.name.Name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Class is used to store structured information about the name</p>
+<dl class="attribute">
+<dt id="text.name.Name.ending">
+<code class="descname">ending</code><em class="property"> = ''</em><a class="headerlink" href="#text.name.Name.ending" title="Permalink to this definition">¶</a></dt>
+<dd><p>Suffix of the name</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="text.name.Name.name">
+<code class="descname">name</code><em class="property"> = ''</em><a class="headerlink" href="#text.name.Name.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Main part of the name</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="text.name.Name.parse">
+<code class="descname">parse</code><span class="sig-paren">(</span><em>raw_word: str</em><span class="sig-paren">)</span> &#x2192; object<a class="headerlink" href="#text.name.Name.parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Instantiate the Name with a raw string word</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>raw_word</strong> &#8211; The string that contains one word - name.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Name instance.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="text.name.Name.preposition">
+<code class="descname">preposition</code><em class="property"> = ''</em><a class="headerlink" href="#text.name.Name.preposition" title="Permalink to this definition">¶</a></dt>
+<dd><p>Preposition of the name</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="text.name.Name.print">
+<code class="descname">print</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#text.name.Name.print" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="text.name.Name.suffix">
+<code class="descname">suffix</code><em class="property"> = ''</em><a class="headerlink" href="#text.name.Name.suffix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Suffix of the name</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="id1">
+<h2>Module: text.generator<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-text.generator"></span><p>This module contains functions to generate random text fragments, restricted with some conditions. And to replace character names in this fragments.</p>
+<dl class="function">
+<dt>
+<code class="descclassname">text.generator.</code><code class="descname">get_name_index</code><span class="sig-paren">(</span><em>name_object</em><span class="sig-paren">)</span></dt>
+<dd><p>This function returns index for given name in a names map from namedata module</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name_object</strong> &#8211; type - Name class object.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">index for given name object in a names map from namedata module</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descclassname">text.generator.</code><code class="descname">get_printable_sentence</code><span class="sig-paren">(</span><em>structured_sentence</em><span class="sig-paren">)</span></dt>
+<dd><p>This function converts list of strings to one solid string</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>structured_sentence</strong> &#8211; type - list of strings</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">strings concatenation</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descclassname">text.generator.</code><code class="descname">get_ss_name</code><span class="sig-paren">(</span><em>name</em>, <em>ss_id</em><span class="sig-paren">)</span></dt>
+<dd><p>This function returns name of defined nazi leader in a proper case</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>name</strong> &#8211; type - string. Name of a character.</li>
+<li><strong>ss_id</strong> &#8211; type - int. Index for defined nazi name.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">name of defined nazi leader in a proper case</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descclassname">text.generator.</code><code class="descname">get_ss_sentence</code><span class="sig-paren">(</span><em>normal_sentence</em><span class="sig-paren">)</span></dt>
+<dd><p>This function get source text fragment and changes every usual name in it to nazi name.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>normal_sentence</strong> &#8211; type - string. Source text fragment.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Source text fragment with every usual name changed to nazi name. Type is a list.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descclassname">text.generator.</code><code class="descname">get_text</code><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><blockquote>
+<div>This function selects random text file from Data/text folder. And then cuts form it text fragment that should satisfy the conditions below.</div></blockquote>
+<ul>
+<li><p class="first">Conditions:</p>
+<ul class="simple">
+<li>symbols count between 780 and 1000;</li>
+<li>paragraph should be solid (all sentences should be ended);</li>
+<li>text fragment should contain at least one name;</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">return:</th><td class="field-body">text fragment (type string) that satisfies the conditions above</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descclassname">text.generator.</code><code class="descname">text_contains_name</code><span class="sig-paren">(</span><em>text_for_story</em><span class="sig-paren">)</span></dt>
+<dd><p>This functions checks if there are any names in generated fragment.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>text_for_story</strong> &#8211; type - string, text fragment to check for containing names in it.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">True if text_for_story contains name and False if not.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
+<li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
+</ul>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="#">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Welcome to ssstories&#8217;s documentation!</a><ul>
+<li><a class="reference internal" href="#module-namedata.cases">Module: <code class="docutils literal"><span class="pre">namedata.cases</span></code></a></li>
+<li><a class="reference internal" href="#module-namedata.endings">Module: <code class="docutils literal"><span class="pre">namedata.endings</span></code></a></li>
+<li><a class="reference internal" href="#module-namedata.names">Module: <code class="docutils literal"><span class="pre">namedata.names</span></code></a></li>
+<li><a class="reference internal" href="#module-namedata.separators">Module: <code class="docutils literal"><span class="pre">namedata.separators</span></code></a></li>
+<li><a class="reference internal" href="#module-text.analyser">Module: <code class="docutils literal"><span class="pre">text.analyser</span></code></a></li>
+<li><a class="reference internal" href="#module-text.editor">Module: <code class="docutils literal"><span class="pre">text.editor</span></code></a></li>
+<li><a class="reference internal" href="#module-text.generator">Module: <code class="docutils literal"><span class="pre">text.generator</span></code></a></li>
+<li><a class="reference internal" href="#module-text.name">Module: <code class="docutils literal"><span class="pre">text.name</span></code></a></li>
+<li><a class="reference internal" href="#id1">Module: text.generator</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/index.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, krokopluh, savermyas.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
